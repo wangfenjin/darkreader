@@ -52,17 +52,13 @@ function Body(props: BodyProps) {
     const unreadNews = props.data.news.filter(({read}) => !read);
 
     function toggleNews() {
-        if (state.newsOpen && unreadNews.length > 0) {
-            props.actions.markNewsAsRead(unreadNews.map(({id}) => id));
-        }
+        props.actions.markNewsAsRead(unreadNews.map(({id}) => id));
         setState({newsOpen: !state.newsOpen});
     }
 
     function onNewsOpen(...news: NewsObject[]) {
         const unread = news.filter(({read}) => !read);
-        if (unread.length > 0) {
-            props.actions.markNewsAsRead(unread.map(({id}) => id));
-        }
+        props.actions.markNewsAsRead(unread.map(({id}) => id));
     }
 
     let displayedNewsCount = unreadNews.length;

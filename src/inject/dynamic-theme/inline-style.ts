@@ -181,6 +181,10 @@ function overrideInlineStyle(element: HTMLElement, filter: FilterConfig) {
     function setCustomProp(targetCSSProp: string, modifierCSSProp: string, cssVal: string) {
         const {customProp, dataAttr, store} = overrides[targetCSSProp];
 
+        if (window.location.host === "docs.bytedance.net" &&
+            modifierCSSProp === "background-color") {
+            return;
+        }
         const mod = getModifiableCSSDeclaration(modifierCSSProp, cssVal, null, null);
         if (!mod) {
             return;

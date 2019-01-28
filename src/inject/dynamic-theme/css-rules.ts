@@ -18,7 +18,7 @@ export function iterateCSSRules(rules: CSSRuleList, iterate: (rule: CSSStyleRule
                     logWarn(err);
                 }
             } else {
-                logWarn(`CSSRule type not supported`, rule);
+                // logWarn(`CSSRule type not supported`, rule);
             }
         });
 }

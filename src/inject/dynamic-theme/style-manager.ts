@@ -406,7 +406,7 @@ export function manageStyle(element: HTMLLinkElement | HTMLStyleElement, {update
         try {
             return element.sheet.cssRules;
         } catch (err) {
-            logWarn(err);
+            // logWarn(err);
             return null;
         }
     }

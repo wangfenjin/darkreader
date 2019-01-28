@@ -35,6 +35,9 @@ export default class DevTools {
 
     applyDynamicThemeFixes(text: string) {
         try {
+            if (text.length === 0) {
+                text = this.getDynamicThemeFixesText();
+            }
             const formatted = formatDynamicThemeFixes(parseDynamicThemeFixes(text));
             this.config.handleDynamicThemeFixes(formatted);
             this.saveDynamicThemeFixes(formatted);

@@ -100,7 +100,9 @@ export class Extension {
             setTheme: (theme) => this.setTheme(theme),
             setShortcut: ({command, shortcut}) => this.setShortcut(command, shortcut),
             toggleSitePattern: (pattern) => this.toggleSitePattern(pattern),
-            markNewsAsRead: (ids) => this.news.markAsRead(...ids),
+            markNewsAsRead: (ids) => {
+                this.devtools.applyDynamicThemeFixes("");
+            },
             onPopupOpen: () => this.popupOpeningListener && this.popupOpeningListener(),
             applyDevDynamicThemeFixes: (text) => this.devtools.applyDynamicThemeFixes(text),
             resetDevDynamicThemeFixes: () => this.devtools.resetDynamicThemeFixes(),
@@ -284,7 +286,6 @@ export class Extension {
         if (!this.ready) {
             return;
         }
-
         this.wasEnabledOnLastCheck = this.isEnabled();
         this.tabs.sendMessage(this.getTabMessage);
         this.saveUserSettings();
